@@ -5,3 +5,7 @@ services:
       - "8080:80"
     volumes:
       - ./server:/usr/share/nginx/html:ro
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+    restart: always
